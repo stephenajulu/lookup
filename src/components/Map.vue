@@ -38,7 +38,7 @@
       }"
       :nav-control="{ show: false }"
       @map-click="addPoints"
-      @map-init="loadEvent"
+      @map-render="loadEvent"
     />
     <div class="add" @click="showEventMaker" v-if="logged"></div>
   </div>
