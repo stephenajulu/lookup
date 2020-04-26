@@ -1,4 +1,4 @@
-# saveaplanet
+# lookup
 
 ## Project setup
 ```
