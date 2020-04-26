@@ -67,8 +67,8 @@ export default {
     };
   },
   watch: {
-    events() {
-      this.addPins(mapData);
+    events(newEvents) {
+      this.addPins(newEvents, mapData);
     },
     center(newCenter) {
       this.$emit("centerChanged", this.newCity, newCenter);
@@ -77,9 +77,9 @@ export default {
   methods: {
     loadEvent(map) {
       mapData = map;
-      this.events == false ? "" : this.addPins(map);
+      this.events == false ? "" : this.addPins(this.events, map);
     },
-    addPins(map) {
+    addPins(events, map) {
       const mapboxgl = require("mapbox-gl/dist/mapbox-gl");
 
       this.events.features.forEach(function(marker) {
@@ -129,7 +129,7 @@ export default {
     },
     showEventMaker() {
       this.eventMaker = this.eventMaker ? false : true;
-      if (this.eventMaker && this.points <= 0) {
+      if (this.eventMaker && this.points.length == 0) {
         this.error = true;
         this.errorText =
           "Where you want to add new event? (choose a point by clicking the map)";
