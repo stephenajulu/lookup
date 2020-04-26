@@ -112,6 +112,10 @@ export default {
         : str;
     },
     changeCity(newCity, newCenter) {
+      this.events = {
+        type: "FeatureCollection",
+        features: []
+      };
       fetch(
         `https://lookupapp-api.herokuapp.com/get/${
           newCity.split(",")[0]
