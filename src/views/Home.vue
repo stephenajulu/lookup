@@ -111,7 +111,11 @@ export default {
         : str;
     },
     changeCity(newCity, newCenter) {
-      fetch(`http://localhost:3000/get/${newCity.split(",")[0]}/weather`)
+      fetch(
+        `https://lookupapp-api.herokuapp.com/get/${
+          newCity.split(",")[0]
+        }/weather`
+      )
         .then(res => res.json())
         .then(result => {
           this.city[0].name = newCity.split(",")[0];

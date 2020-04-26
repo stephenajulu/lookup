@@ -56,7 +56,7 @@ export default {
   props: ["events", "logged", "user"],
   data() {
     return {
-    token: process.env.VUE_APP_mapBoxToken,
+      token: process.env.VUE_APP_mapBoxToken,
       points: [],
       center: [-96.7969, 32.7763],
       eventMaker: false,
@@ -99,7 +99,9 @@ export default {
     },
     searchCities(v) {
       if (v.keyCode == 13) {
-        fetch(`http://localhost:3000/get/${v.target.value}/center`)
+        fetch(
+          `https://lookupapp-api.herokuapp.com/get/${v.target.value}/center`
+        )
           .then(res => res.json())
           .then(result => {
             this.center = result.center;
