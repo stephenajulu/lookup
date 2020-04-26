@@ -63,6 +63,7 @@
 import Header from "@/components/Header.vue";
 import Map from "@/components/Map.vue";
 import firebase from "firebase";
+import moment from "moment";
 
 export default {
   name: "Home",
@@ -130,6 +131,7 @@ export default {
       let that = this;
       db.collection("event")
         .where("center", "==", newCenter)
+        .orderBy("time", "desc")
         .onSnapshot(function(snapshot) {
           snapshot.docChanges().forEach(function(change) {
             if (change.type === "added") {
@@ -138,7 +140,7 @@ export default {
                 properties: {
                   id: change.doc.id,
                   text: change.doc.data().text,
-                  time: change.doc.data().time,
+                  time: moment(change.doc.data().time).fromNow(),
                   userImg: change.doc.data().userimg,
                   author: change.doc.data().author
                 },
