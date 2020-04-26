@@ -8,7 +8,7 @@
       v-tooltip.auto="'Log Out'"
       @click="handleLogout"
     ></div>
-    <div v-if="!logged && logged != null">
+    <div v-if="!logged">
       <button
         class="btn github"
         @click="handleGithub"
