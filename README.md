@@ -1,5 +1,7 @@
 # Lookup - It's what happening around you.
 
+## EarthxHack20 Submission
+
 ## The Problem
 I always wanted a place where you can lookup events that are taking place around the world. Be it a environment issue or something as big as COVID-19.
 A place where people can instantly share what's happening around them.
