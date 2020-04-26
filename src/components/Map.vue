@@ -29,7 +29,7 @@
     </div>
     <mapbox
       class="map"
-      :access-token="process.env.VUE_APP_mapBoxToken"
+      :access-token="token"
       :map-options="{
         style: 'mapbox://styles/mapbox/dark-v10',
         center: center,
@@ -56,6 +56,7 @@ export default {
   props: ["events", "logged", "user"],
   data() {
     return {
+    token: process.env.VUE_APP_mapBoxToken,
       points: [],
       center: [-96.7969, 32.7763],
       eventMaker: false,
