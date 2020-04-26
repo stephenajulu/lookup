@@ -13,7 +13,7 @@ var firebaseConfig = {
   storageBucket: "mylookupapp.appspot.com",
   messagingSenderId: "147224680392",
   appId: "1:147224680392:web:e0092e08f8c6c71a3212fd",
-  measurementId: "G-0QFQE7JKPL",
+  measurementId: "G-0QFQE7JKPL"
 };
 
 firebase.initializeApp(firebaseConfig);
@@ -27,5 +27,5 @@ new Vue({
   router,
   render: function(h) {
     return h(App);
-  },
+  }
 }).$mount("#app");

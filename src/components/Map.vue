@@ -34,7 +34,7 @@
         style: 'mapbox://styles/mapbox/dark-v10',
         center: center,
         zoom: 10,
-        interactive: false,
+        interactive: false
       }"
       :nav-control="{ show: false }"
       @map-load="loadEvent"
@@ -62,7 +62,7 @@ export default {
       text: null,
       error: false,
       errorText: null,
-      newCity: null,
+      newCity: null
     };
   },
   watch: {
@@ -71,7 +71,7 @@ export default {
     },
     center(newCenter) {
       this.$emit("centerChanged", this.newCity, newCenter);
-    },
+    }
   },
   methods: {
     loadEvent(map) {
@@ -99,16 +99,16 @@ export default {
     searchCities(v) {
       if (v.keyCode == 13) {
         fetch(`http://localhost:3000/get/${v.target.value}/center`)
-          .then((res) => res.json())
-          .then((result) => {
+          .then(res => res.json())
+          .then(result => {
             this.center = result.center;
             mapData.easeTo({
-              center: [result.center[0], result.center[1]],
+              center: [result.center[0], result.center[1]]
             });
             this.newCity = result.city;
             v.target.value = "";
           })
-          .catch((err) => console.error(err));
+          .catch(err => console.error(err));
       }
     },
     addPoints(map, e) {
@@ -155,14 +155,14 @@ export default {
             userimg: that.user.photoURL,
             points: that.points,
             center: that.center,
-            time: new Date().getTime(),
+            time: new Date().getTime()
           })
           .then(function(docRef) {
             db.collection("byUser")
               .doc(that.user.uid)
               .set(
                 {
-                  events: firebase.firestore.FieldValue.arrayUnion(docRef.id),
+                  events: firebase.firestore.FieldValue.arrayUnion(docRef.id)
                 },
                 { merge: true }
               );
@@ -179,8 +179,8 @@ export default {
             }, 4000);
           });
       }
-    },
-  },
+    }
+  }
 };
 </script>
 

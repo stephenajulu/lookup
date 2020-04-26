@@ -68,13 +68,13 @@ export default {
   name: "Home",
   components: {
     Header,
-    Map,
+    Map
   },
   data() {
     return {
       events: {
         type: "FeatureCollection",
-        features: [],
+        features: []
       },
       logged: null,
       loggedUser: null,
@@ -87,11 +87,11 @@ export default {
             {
               text: "...",
               img: "",
-              temp: "...",
-            },
-          ],
-        },
-      ],
+              temp: "..."
+            }
+          ]
+        }
+      ]
     };
   },
   watch: {
@@ -102,7 +102,7 @@ export default {
       } else {
         this.logged = false;
       }
-    },
+    }
   },
   methods: {
     truncateText(str) {
@@ -112,15 +112,15 @@ export default {
     },
     changeCity(newCity, newCenter) {
       fetch(`http://localhost:3000/get/${newCity.split(",")[0]}/weather`)
-        .then((res) => res.json())
-        .then((result) => {
+        .then(res => res.json())
+        .then(result => {
           this.city[0].name = newCity.split(",")[0];
           this.city[0].state_country = newCity.split(",").splice(1, 2)[0];
           this.city[0].weather[0].text = result.text;
           this.city[0].weather[0].img = "https:" + result.icon;
           this.city[0].weather[0].temp = result.temp;
         })
-        .catch((err) => console.error(err));
+        .catch(err => console.error(err));
 
       let db = firebase.firestore();
       let that = this;
@@ -136,28 +136,28 @@ export default {
                   text: change.doc.data().text,
                   time: change.doc.data().time,
                   userImg: change.doc.data().userimg,
-                  author: change.doc.data().author,
+                  author: change.doc.data().author
                 },
                 geometry: {
                   type: "Point",
                   coordinates: [
                     change.doc.data().points[1],
-                    change.doc.data().points[0],
-                  ],
-                },
+                    change.doc.data().points[0]
+                  ]
+                }
               });
             }
           });
         });
-    },
+    }
   },
   mounted() {
     this.changeCity("Dallas, Texas, United States", [-96.7969, 32.7763]);
     let that = this;
-    firebase.auth().onAuthStateChanged((user) => {
+    firebase.auth().onAuthStateChanged(user => {
       that.loggedUser = user;
     });
-  },
+  }
 };
 </script>
 
