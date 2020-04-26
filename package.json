@@ -11,6 +11,7 @@
     "firebase": "^7.14.2",
     "mapbox-gl": "^1.9.1",
     "mapbox-gl-vue": "^2.0.4",
+    "moment": "^2.24.0",
     "register-service-worker": "^1.7.1",
     "v-tooltip": "^2.0.3",
     "vue": "^2.6.11",
