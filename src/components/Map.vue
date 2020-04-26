@@ -29,7 +29,7 @@
     </div>
     <mapbox
       class="map"
-      :access-token="process.env.mapBoxToken"
+      :access-token="process.env.VUE_APP_mapBoxToken"
       :map-options="{
         style: 'mapbox://styles/mapbox/dark-v10',
         center: center,
